@@ -19,11 +19,11 @@ class RulesSpec extends FunSpec with Matchers {
         Rules(neighbors = 2, alive = true) should be(true)
       }
 
-      it ("return false for more than three live neighbors") {
+      it ("returns false for more than three live neighbors") {
         Rules(neighbors = 4, alive = false) should be(false)
       }
 
-      it ("return false for less than two live neighbors") {
+      it ("returns false for less than two live neighbors") {
         Rules(neighbors = 1, alive = false) should be(false)
       }
     }
