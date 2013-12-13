@@ -1,26 +1,33 @@
 package conway
 
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{FunSpec, Matchers}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class RulesSpec extends FlatSpec with Matchers {
+class RulesSpec extends FunSpec with Matchers {
 
-  "Rules" should "return true for three live neighbors" in {
-    Rules(neighbors = 3, alive = false) should be(true)
-  }
+  describe("Rules") {
 
-  "Rules" should "return true if Cell is alive and has two live neighbors" in {
-    Rules(neighbors = 2, alive = true) should be(true)
-  }
+    describe("apply") {
 
-  "Rules" should "return false for more than three live neighbors" in {
-    Rules(neighbors = 4, alive = false) should be(false)
-  }
+      it ("returns true for three live neighbors") {
+        Rules(neighbors = 3, alive = false) should be(true)
+      }
 
-  "Rules" should "return false for less than two live neighbors" in {
-    Rules(neighbors = 1, alive = false) should be(false)
+      it ("returns true if Cell is alive and has two live neighbors") {
+        Rules(neighbors = 2, alive = true) should be(true)
+      }
+
+      it ("return false for more than three live neighbors") {
+        Rules(neighbors = 4, alive = false) should be(false)
+      }
+
+      it ("return false for less than two live neighbors") {
+        Rules(neighbors = 1, alive = false) should be(false)
+      }
+    }
+
   }
 
 }
