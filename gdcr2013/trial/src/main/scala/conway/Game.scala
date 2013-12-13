@@ -28,11 +28,7 @@ class Game(val width: Int, val height: Int) {
 
   def evolve(current_gen: Map[(Int,Int), Boolean]): Map[(Int,Int), Boolean] = {
     var next_gen = collection.mutable.Map[(Int,Int), Boolean] ()
-    current_gen.foreach( p =>
-      {
-        next_gen += p._1 -> Rules(neighbors(p._1._1, p._1._2), alive = p._2)
-      }
-    )
+    current_gen.foreach( p => next_gen += p._1 -> Rules(neighbors(p._1._1, p._1._2), alive = p._2) )
     next_gen.toMap
   }
 
