@@ -4,9 +4,7 @@ version := "1.0"
 
 scalaVersion := "2.10.2"
 
-ideaExcludeFolders += ".idea"
-
-ideaExcludeFolders += ".idea_modules"
+ideaExcludeFolders ++= Seq( ".idea", ".idea_modules" )
 
 // Test dependencies
 libraryDependencies ++= Seq(
