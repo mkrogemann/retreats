@@ -4,11 +4,6 @@ class Game(val width: Int, val height: Int) {
 
   var game_state: Map[(Int,Int), Boolean] = initial_state()
 
-  def this(game_state: Map[(Int,Int), Boolean]) {
-    this(game_state.keys.maxBy(_._1)._1, game_state.keys.maxBy(_._2)._2)
-    this.game_state = initial_state(game_state)
-  }
-
   def initial_state(map: Map[(Int,Int), Boolean] = Map()): Map[(Int,Int), Boolean] = {
     val state = collection.mutable.Map[(Int,Int), Boolean]()
     (1 to this.width).map( x =>

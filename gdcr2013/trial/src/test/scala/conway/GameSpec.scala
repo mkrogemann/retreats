@@ -17,14 +17,6 @@ class GameSpec extends FunSpec with Matchers {
         game.height should be(5)
       }
 
-      it ("optionally takes a Map representing the initial Game state") {
-        val map = Map((1,1) -> true, (2,1) -> false, (3,1) -> true, (4,1) -> false,
-                      (1,2) -> true, (2,2) -> true, (3,2) -> false, (4,2) -> true,
-                      (1,3) -> false, (2,3) -> true, (3,3) -> false, (4,3)-> true)
-        val game = new Game(map)
-        game.width should be(4)
-        game.height should be(3)
-      }
     }
 
     describe ("neighbors") {
@@ -33,7 +25,7 @@ class GameSpec extends FunSpec with Matchers {
         val current_gen = Map((1,1) -> true, (2,1) -> false, (3,1) -> true, (4,1) -> false,
                               (1,2) -> false, (2,2) -> true, (3,2) -> false, (4,2) -> true,
                               (1,3) -> false, (2,3) -> true, (3,3) -> false, (4,3) -> true)
-        val game = new Game(current_gen)
+        val game = new Game(4,3)
         game.neighbors(current_gen, 3,2) should be(5)
         game.neighbors(current_gen, 2,2) should be(3)
         game.neighbors(current_gen, 4,2) should be(3)
@@ -48,7 +40,7 @@ class GameSpec extends FunSpec with Matchers {
         val current_gen = Map((1,1) -> true, (2,1) -> false, (3,1) -> true, (4,1) -> false,
                               (1,2) -> false, (2,2) -> true, (3,2) -> false, (4,2) -> true,
                               (1,3) -> false, (2,3) -> true, (3,3) -> false, (4,3) -> true)
-        val game = new Game(current_gen)
+        val game = new Game(4,3)
         val expected_next_gen = Map((1,1) -> false, (2,1) -> false, (3,1) -> false, (4,1) -> false,
                                     (1,2) -> false, (2,2) -> true, (3,2) -> false, (4,2) -> true,
                                     (1,3) -> false, (2,3) -> true, (3,3) -> false, (4,3) -> true)
