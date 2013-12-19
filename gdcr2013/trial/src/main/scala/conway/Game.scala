@@ -2,23 +2,6 @@ package conway
 
 class Game(val width: Int, val height: Int) {
 
-  def initial_state(map: Map[(Int,Int), Boolean] = Map()): Map[(Int,Int), Boolean] = {
-    val state = collection.mutable.Map[(Int,Int), Boolean]()
-    (1 to this.width).map( x =>
-      (1 to this.height).map( y =>
-        {
-          val key = (x,y)
-          val cell_state = map.get(key)
-          cell_state match {
-            case Some(boolean) => state += key -> cell_state.get
-            case _ => state += key -> false
-          }
-        }
-      )
-    )
-    state.toMap
-  }
-
   def evolve(current_gen: Map[(Int,Int), Boolean]): Map[(Int,Int), Boolean] = {
     current_gen map { case (k, v) => k -> Rules(neighbors(current_gen, k._1, k._2), alive = v) }
   }
