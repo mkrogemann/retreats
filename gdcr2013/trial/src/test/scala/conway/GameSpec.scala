@@ -34,10 +34,10 @@ class GameSpec extends FunSpec with Matchers {
                               (1,2) -> false, (2,2) -> true, (3,2) -> false, (4,2) -> true,
                               (1,3) -> false, (2,3) -> true, (3,3) -> false, (4,3) -> true)
         val game = new Game(current_gen)
-        game.neighbors(3,2) should be(5)
-        game.neighbors(2,2) should be(3)
-        game.neighbors(4,2) should be(3)
-        game.neighbors(2,1) should be(4)
+        game.neighbors(current_gen, 3,2) should be(5)
+        game.neighbors(current_gen, 2,2) should be(3)
+        game.neighbors(current_gen, 4,2) should be(3)
+        game.neighbors(current_gen, 2,1) should be(4)
       }
 
     }

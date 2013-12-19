@@ -27,15 +27,15 @@ class Game(val width: Int, val height: Int) {
   }
 
   def evolve(current_gen: Map[(Int,Int), Boolean]): Map[(Int,Int), Boolean] = {
-    current_gen map { case (k, v) => k -> Rules(neighbors(k._1, k._2), alive = v) }
+    current_gen map { case (k, v) => k -> Rules(neighbors(current_gen, k._1, k._2), alive = v) }
   }
 
-  def neighbors(x: Int,y: Int): Int = {
+  def neighbors(current_gen: Map[(Int,Int), Boolean], x: Int,y: Int): Int = {
     var num_alive = 0
     (x-1 to x+1).map( col =>
       (y-1 to y+1).map( row =>
         {
-          val value = game_state.get(wrap_or_get_key(col,row))
+          val value = current_gen.get(wrap_or_get_key(col,row))
           value match {
             case Some(true) => num_alive += 1
             case _ =>
@@ -43,7 +43,7 @@ class Game(val width: Int, val height: Int) {
         }
       )
     )
-    if (game_state.get((x,y)) == Some(true)) {
+    if (current_gen.get((x,y)) == Some(true)) { // don't count myself
       num_alive -= 1
     }
     num_alive
