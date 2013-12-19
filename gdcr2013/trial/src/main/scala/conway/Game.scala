@@ -2,8 +2,6 @@ package conway
 
 class Game(val width: Int, val height: Int) {
 
-  var game_state: Map[(Int,Int), Boolean] = initial_state()
-
   def initial_state(map: Map[(Int,Int), Boolean] = Map()): Map[(Int,Int), Boolean] = {
     val state = collection.mutable.Map[(Int,Int), Boolean]()
     (1 to this.width).map( x =>
