@@ -1,4 +1,4 @@
-package scala.conway
+package conway
 
 import org.scalatest.{ShouldMatchers, FlatSpec}
 import org.junit.runner.RunWith
